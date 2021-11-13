@@ -180,7 +180,7 @@ void getData(char *szMesg, uint16_t len)
   if (pStart != NULL)
   {
     flag = true;
-    pStart += 5;  // skip to start of data
+    pStart += 10;  // skip to start of data
 
     PRINT("\nScroll direction: ", *pStart);
     scrollEffect = (*pStart == 'R' ? PA_SCROLL_RIGHT : PA_SCROLL_LEFT);
@@ -204,7 +204,7 @@ void getData(char *szMesg, uint16_t len)
   if (pStart != NULL)
   {
     flag = true;
-    pStart += 10;  // skip to start of data
+    pStart += 5;  // skip to start of data
 
     int16_t speed = atoi(pStart);
     PRINT("\nSpeed: ", P.getSpeed());
@@ -340,13 +340,13 @@ void loop()
   if (flag == false) {
     printsensor_time();
     animate();
+    delay(110);
   }
   handleWiFi();
   if (flag == true) {
-    sensorThings();
     animate();
+    sensorThings();
   }
-  delay(110);
 }
 void sensorThings() {
   h = dht.readHumidity();
